@@ -1,15 +1,11 @@
+'use strict';
+
 var React = require('React');
 
 var Sites = React.createClass({
-
   render: function() {
-    /* jshint ignore:start */
-    return (
-      <div classname="sites"></div>
-    );
-    /* jshint ignore:end */
+    return (<div classname='sites'></div>);
   }
-
 });
 
 module.exports = Sites;
