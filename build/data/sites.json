@@ -1,0 +1,15 @@
+{
+  "data": [{
+    "url": "http://facebook.com",
+    "strategy": "desktop",
+    "time": "2015-01-27 03:04:37"
+  },{
+    "url": "http://36kr.com",
+    "strategy": "desktop",
+    "time": "2015-01-28 03:04:37"
+  },{
+    "url": "http://apple.com",
+    "strategy": "desktop",
+    "time": "2015-01-26 03:04:37"
+  }]
+}
