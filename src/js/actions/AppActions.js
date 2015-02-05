@@ -1,11 +1,12 @@
+'use strict';
+
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var actionType    = require('./ActionType');
 
 module.exports = {
-  doSomeThing: function(params) {
+  getSites: function() {
     AppDispatcher.handleViewAction({
-      actionType: actionType.ACTION_NAME,
-      params: params
+      actionType: actionType.GET_SITES
     });
   }
 };

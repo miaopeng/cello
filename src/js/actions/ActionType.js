@@ -1,3 +1,3 @@
 module.exports = {
-  ACTION_NAME: 'sample_action'
+  GET_SITES: 'get_sites'
 };

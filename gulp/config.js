@@ -9,6 +9,7 @@ module.exports = {
       // for sass sourcemap linking
       baseDir: [dest, src]
     },
+    port: 3333,
     files: [
       dest + '/**'
     ]

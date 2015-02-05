@@ -1,4 +1,4 @@
-opyright 2013-2014 Facebook, Inc.
+/* Copyright 2013-2014 Facebook, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,9 @@ opyright 2013-2014 Facebook, Inc.
 
 var Dispatcher = require('./Dispatcher');
 
-var merge = require('react/lib/merge');
+var assign = require('object.assign');
 
-var AppDispatcher = merge(Dispatcher.prototype, {
+var AppDispatcher = assign(Dispatcher.prototype, {
 
   /**
    * A bridge function between the views and the dispatcher, marking the action

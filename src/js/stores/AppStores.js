@@ -1,14 +1,19 @@
+'use strict';
+
 var EventEmitter  = require('events').EventEmitter;
 var Promise       = require('es6-promise').Promise;
-var merge         = require('react/lib/merge');
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var actionType    = require('../actions/ActionType');
+var request       = require('superagent');
+var assign        = require('object.assign');
 
-var _db = {};
+var _db = {
+  sites: []
+};
 
 var EVENT_CHANGE = 'store::change';
 
-var AppStores = merge(EventEmitter.prototype, {
+var AppStores = assign(EventEmitter.prototype, {
   get: function(name) {
     return _db[name];
   },
@@ -29,7 +34,7 @@ var AppStores = merge(EventEmitter.prototype, {
 AppDispatcher.register(function(payload) {
   var action = payload.action;
   switch(action.actionType) {
-    case actionType.ACTION_NAME:
+    case actionType.GET_SITES:
       return doSomeThing(action.params);
     default:
       return true;
@@ -38,5 +43,12 @@ AppDispatcher.register(function(payload) {
 
 function doSomeThing(params) {
   // fetch data & update
-  AppStores.emitChange();
+  request.get('http://localhost:3000/sites.json').end(function(resp) {
+    if (resp.body && resp.body.length) {
+      _db.sites = resp.body;
+      AppStores.emitChange();
+    }
+  });
 }
+
+module.exports = AppStores;
