@@ -8,5 +8,11 @@ module.exports = {
     AppDispatcher.handleViewAction({
       actionType: actionType.GET_SITES
     });
+  },
+
+  getInsights: function() {
+    AppDispatcher.handleViewAction({
+      actionType: actionType.GET_INSIGHTS
+    });
   }
 };

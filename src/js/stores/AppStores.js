@@ -8,7 +8,9 @@ var request       = require('superagent');
 var assign        = require('object.assign');
 
 var _db = {
-  sites: []
+  insights: [],
+  sites: [],
+  loading: true
 };
 
 var EVENT_CHANGE = 'store::change';
@@ -35,17 +37,31 @@ AppDispatcher.register(function(payload) {
   var action = payload.action;
   switch(action.actionType) {
     case actionType.GET_SITES:
-      return doSomeThing(action.params);
+      return getSites(action.params);
+    case actionType.GET_INSIGHTS:
+      return getInsights(action.params);
     default:
       return true;
   }
 });
 
-function doSomeThing(params) {
+function getSites(params) {
   // fetch data & update
   request.get('http://localhost:3000/sites.json').end(function(resp) {
     if (resp.body && resp.body.length) {
       _db.sites = resp.body;
+      _db.loading = false;
+      AppStores.emitChange();
+    }
+  });
+}
+
+function getInsights(params) {
+  // fetch data & update
+  request.get('http://localhost:3000/insights.json').end(function(resp) {
+    if (resp.body && resp.body.length) {
+      _db.insights = resp.body;
+      _db.loading = false;
       AppStores.emitChange();
     }
   });

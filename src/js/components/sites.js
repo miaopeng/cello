@@ -4,7 +4,7 @@ var React = require('react');
 
 var Sites = React.createClass({
   createSite: function(site) {
-    return (<li key={site.url}>{site.url}</li>);
+    return (<li key={site.id}>{site.url}</li>);
   },
 
   render: function() {

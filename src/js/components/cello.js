@@ -4,13 +4,14 @@ var React = require('react');
 var mui = require('material-ui');
 var RaisedButton = mui.RaisedButton;
 var request = require('superagent');
-var Sites = require('./sites');
+var InsightList = require('./InsightList');
 var Actions = require('../actions/AppActions');
 var Store = require('../stores/AppStores');
 
 function getAppState() {
   return {
-    sites: Store.get('sites')
+    insights: Store.get('insights'),
+    loading: Store.get('loading')
   };
 }
 
@@ -22,7 +23,7 @@ var Cello = React.createClass({
 
   componentDidMount: function() {
     Store.addChangeListener(this._onChange);
-    Actions.getSites();
+    Actions.getInsights();
   },
 
   componentWillUnmount: function() {
@@ -30,18 +31,28 @@ var Cello = React.createClass({
   },
 
   render: function() {
+    var loading = null;
+    if (this.state.loading) {
+      loading = (<RaisedButton label="Loading..."
+          primary={true} visible={this.state.loading} />);
+    }
     return (
-      <div className="cello">
-        <Sites sites={this.state.sites}/>
-        <RaisedButton label="Loading..." primary={true}/>
+      <div id="cello">
+        {loading}
+        <aside>
+          <ul>
+            <li><a href="">Insights</a></li>
+          </ul>
+        </aside>
+        <article>
+          <InsightList insights={this.state.insights} />
+        </article>
       </div>
     );
   },
 
   _onChange: function() {
     this.setState(getAppState());
-    window.console.info("log: change" + 1, this.state); // log
-    window.console.info("log: change" + 1, Store.getAll()); // log
   }
 });
 

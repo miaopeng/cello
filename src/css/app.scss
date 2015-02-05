@@ -2,6 +2,7 @@
 
 $startColor:  #cf9e75;
 $stopColor:   #d2dcd1;
+$asideWidth:  150px;
 
 html,
 body {
@@ -21,4 +22,37 @@ body {
 
 #root {
   margin: 20px;
+}
+
+#cello {
+  width: 1000px;
+  height: 400px;
+  margin: 60px auto;
+  padding: 30px;
+  overflow: hidden;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, .2);
+  opacity: .8;
+  background-color: #fff;
+}
+
+aside {
+  float: left;
+  width: $asideWidth;
+  a {
+    font-size: 24px;
+    color: #333;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #777;
+  }
+}
+
+article {
+  margin-left: $asideWidth + 20;
+  overflow:hidden;
+}
+
+ul {
+  list-style: none;
 }
