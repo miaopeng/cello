@@ -1,4 +1,6 @@
 @import "../../node_modules/material-ui-sass/material-ui";
+@import 'variables';
+@import 'mui_tabs';
 @import 'fullpage';
 
 $startColor: #cf9e75;
@@ -131,5 +133,12 @@ ul {
 
   .score-circle {
     margin-right: $gap;
+  }
+  .endpoint-list {
+    width: 200px;
+    float: left;
+  }
+  .endpoint-panel {
+    overflow: hidden;
   }
 }
