@@ -118,6 +118,10 @@ ul {
 
 .endpoint-card {
   margin-bottom: $gap;
+  cursor: pointer;
+  &.on .meta{
+    color: #333;
+  }
 }
 
 .insight-panel {
@@ -141,4 +145,30 @@ ul {
   .endpoint-panel {
     overflow: hidden;
   }
+}
+.rule-list > .bd {
+  padding: $gap 0;
+}
+.rule-card {
+  margin-bottom: $gap;
+  > .hd {
+    margin-bottom: 5px;
+  }
+  > .bd {
+    font-size: 13px;
+    color: #666;
+  }
+
+  a { color: cadetblue; }
+  a:hover { text-decoration: none; }
+  b {
+    margin: 0 2px;
+    color: cadetblue;
+    font-size: 14px;
+    font-style: italic;
+  }
+}
+.rule-score {
+  width: 100px;
+  margin-right: 10px;
 }

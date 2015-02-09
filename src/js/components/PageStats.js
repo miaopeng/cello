@@ -1,6 +1,6 @@
 'use strict';
 
-var React = require('React');
+var React = require('react');
 var mui = require('material-ui');
 var numberToHumanSize = require('../utils/format').numberToHumanSize;
 var Menu = mui.Menu;

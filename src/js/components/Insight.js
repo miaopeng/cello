@@ -2,12 +2,13 @@
 
 var React = require('react');
 var Store = require('../stores/AppStores');
+var classnames= require('classnames');
 var shortdate = require('../utils/format').shortdate;
 var mui = require('material-ui');
 var Tabs = mui.Tabs;
 var Tab = mui.Tab;
-var Menu = mui.Menu;
 var PageStats = require('./PageStats');
+var RuleResult = require('./RuleResult');
 
 
 var Insight = React.createClass({
@@ -27,7 +28,11 @@ var Insight = React.createClass({
   },
 
   createEndPoint: function(point) {
-    return (<div className="endpoint-card" onClick={this.selectEndPoint.bind(this, point)}>
+    var cls = classnames({
+      "endpoint-card": true,
+      'on': point === this.state.currentEndPoint
+    });
+    return (<div className={cls} onClick={this.selectEndPoint.bind(this, point)}>
             <span className="score-circle">{point.speed_score}</span>
             <span className="meta">{shortdate(point.created_at)}</span>
            </div>);
@@ -43,8 +48,8 @@ var Insight = React.createClass({
                 <div className="endpoint-panel">
                   <Tabs>
                     <Tab label="Page Stats"><PageStats endpoint={this.state.currentEndPoint}/></Tab>
-                    <Tab label="Bad">Bad</Tab>
-                    <Tab label="Good">Good</Tab>
+                    <Tab label="Bad"><RuleResult type="bad" endpoint={this.state.currentEndPoint}/></Tab>
+                    <Tab label="Good"><RuleResult type="good" endpoint={this.state.currentEndPoint}/></Tab>
                   </Tabs>
                 </div>
               </div>
