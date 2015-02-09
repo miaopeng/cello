@@ -1,16 +1,18 @@
 'use strict';
 
 var EventEmitter  = require('events').EventEmitter;
-var Promise       = require('es6-promise').Promise;
+var Promise = require('es6-promise').Promise;
 var AppDispatcher = require('../dispatcher/AppDispatcher');
-var actionType    = require('../actions/ActionType');
-var request       = require('superagent');
-var assign        = require('object.assign');
+var actionType = require('../actions/ActionType');
+var request = require('superagent');
+var assign = require('object.assign');
 
 var _db = {
   insights: [],
   sites: [],
-  loading: true
+  loading: true,
+  currentInsight: null,
+  currentInsightId: null
 };
 
 var EVENT_CHANGE = 'store::change';
@@ -40,14 +42,17 @@ AppDispatcher.register(function(payload) {
       return getSites(action.params);
     case actionType.GET_INSIGHTS:
       return getInsights(action.params);
+    case actionType.GET_INSIGHT:
+      return getInsight(action.insightId);
+    case actionType.NAV_INSIGHT_LIST:
+      return navInsightList();
     default:
       return true;
   }
 });
 
-function getSites(params) {
-  // fetch data & update
-  request.get('http://localhost:3000/sites.json').end(function(resp) {
+function getSites() {
+  request.get(app.apiRoot + '/sites.json').end(function(resp) {
     if (resp.body && resp.body.length) {
       _db.sites = resp.body;
       _db.loading = false;
@@ -56,15 +61,30 @@ function getSites(params) {
   });
 }
 
-function getInsights(params) {
-  // fetch data & update
-  request.get('http://localhost:3000/insights.json').end(function(resp) {
+function getInsights() {
+  request.get(app.apiRoot + '/insights.json').end(function(resp) {
     if (resp.body && resp.body.length) {
       _db.insights = resp.body;
       _db.loading = false;
       AppStores.emitChange();
     }
   });
+}
+
+function getInsight (insightId) {
+  request.get(app.apiRoot + '/insights/' + insightId +'.json').end(function(resp) {
+    if (resp.body && resp.body) {
+      _db.currentInsightId = insightId;
+      _db.currentInsight = resp.body;
+      AppStores.emitChange();
+    }
+  });
+}
+
+function navInsightList () {
+  _db.currentInsightId = null;
+  _db.currentInsight = null;
+  AppStores.emitChange();
 }
 
 module.exports = AppStores;

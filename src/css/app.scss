@@ -1,15 +1,20 @@
 @import "../../node_modules/material-ui-sass/material-ui";
+@import 'fullpage';
 
-$startColor:  #cf9e75;
-$stopColor:   #d2dcd1;
-$asideWidth:  150px;
+$startColor: #cf9e75;
+$stopColor: #d2dcd1;
+$asideWidth: 150px;
+$hlGreen: #51ad6f;
+$gap: 20px;
 
 html,
 body {
   margin: 0;
   padding: 0;
 }
+
 body {
+  font-family: 'Roboto', sans-serif;
   background: $stopColor; /* Old browsers */
   background: -moz-linear-gradient(-45deg, $startColor 0%, $stopColor 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, $startColor), color-stop(100%, $stopColor)); /* Chrome,Safari4+ */
@@ -26,10 +31,10 @@ body {
 
 #cello {
   width: 1000px;
-  height: 400px;
+  height: 618px;
   margin: 60px auto;
   padding: 30px;
-  overflow: hidden;
+  overflow: auto;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, .2);
   opacity: .8;
   background-color: #fff;
@@ -40,11 +45,11 @@ aside {
   width: $asideWidth;
   a {
     font-size: 24px;
-    color: #333;
+    color: #666;
     text-decoration: none;
   }
   a:hover {
-    color: #777;
+    color: #999;
   }
 }
 
@@ -55,4 +60,76 @@ article {
 
 ul {
   list-style: none;
+}
+
+.insight-card {
+  padding: $gap;
+  border-bottom: 1px solid #eee;
+
+  &:hover {
+    background-color: #efefef;
+    cursor: pointer;
+  }
+
+  > .hd {
+    width: 80px;
+    float: left;
+    margin-right: $gap;
+  }
+
+  > .bd {
+    overflow: hidden;
+  }
+
+  .title {
+    font-size: 18px;
+    line-height: 1.4em;
+    color: $hlGreen;
+    margin-top: 5px;
+  }
+}
+
+.meta {
+  font-size: 12px;
+  color: #aaa;
+  text-transform: uppercase;
+}
+
+.score-card {
+  padding: 5px;
+  text-align: center;
+  line-height: 45px;
+}
+
+.score-circle {
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+  border: 1px solid $hlGreen;
+  border-radius: 50%;
+  overflow: hidden;
+  color: #666;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 43px;
+}
+
+.endpoint-card {
+  margin-bottom: $gap;
+}
+
+.insight-panel {
+  h1 {
+    font-size: 18px;
+    color: $hlGreen;
+    border-bottom: 1px solid #eee;
+    padding-bottom: $gap;
+  }
+  > .bd {
+    margin: $gap 0;
+  }
+
+  .score-circle {
+    margin-right: $gap;
+  }
 }

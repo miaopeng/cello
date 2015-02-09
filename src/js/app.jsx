@@ -2,10 +2,12 @@
 
 var React = require('react');
 var Cello = require('./components/cello');
+var assign = require('object.assign');
 
 window.app = {
-  start: function(mountNode) {
-    React.render(<Cello />, mountNode);
+  start: function(options) {
+    assign(this, options);
+    React.render(<Cello />, options.mountNode);
   }
 };
 

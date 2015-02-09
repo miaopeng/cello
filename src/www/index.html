@@ -4,13 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, minimal-ui">
   <title>Demo - cello</title>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="app.css" />
 </head>
 <body>
 <div id="root"></div>
 <script type="text/javascript" src="app.js"></script>
 <script type="text/javascript">
-  app.start(document.getElementById('root'));
+  app.start({
+    mountNode: document.getElementById('root'),
+    apiRoot: 'http://localhost:3000'
+  });
 </script>
 </body>
 </html>

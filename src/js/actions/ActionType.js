@@ -1,4 +1,6 @@
 module.exports = {
   GET_SITES: 'get_sites',
-  GET_INSIGHTS: 'get_insights'
+  GET_INSIGHTS: 'get_insights',
+  GET_INSIGHT: 'get_insight',
+  NAV_INSIGHT_LIST: 'nav_insight_list'
 };
