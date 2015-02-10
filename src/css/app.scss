@@ -167,8 +167,50 @@ ul {
     font-size: 14px;
     font-style: italic;
   }
+
+  .mui-icon {
+    font-size: 14px;
+    margin-right: 5px;
+  }
+  .mdfi_action_done {
+    color: $hlGreen;
+  }
+  .mdfi_action_info_outline.state-critical {
+    color: #d9534f;
+  }
+  .mdfi_action_info_outline.state-warning {
+    color: #f0ad4e;
+  }
 }
 .rule-score {
   width: 100px;
   margin-right: 10px;
+}
+
+.url-block-list {
+  list-style: circle;
+  padding-left: $gap;
+  margin-top: $gap;
+  > li {
+    margin-bottom: $gap;
+  }
+}
+
+.url-list {
+  margin: 5px 0;
+  &.state-collapsed li {
+    display: none;
+  }
+  &.state-collapsed li:nth-child(-n+5) {
+    display: block;
+  }
+
+  li {
+    display: block;
+  } 
+  .link-toggle {
+    display: block;
+    margin-top: 5px;
+    text-decoration: none;
+  }
 }
