@@ -25,7 +25,7 @@ var Cello = React.createClass({
     return getAppState();
   },
 
-  componentDidMount: function() {
+  componentWillMount: function() {
     Store.addChangeListener(this._onChange);
     Actions.getInsights();
   },
@@ -36,15 +36,19 @@ var Cello = React.createClass({
 
   render: function() {
     var loading = null,
-      currentView = (<InsightList insights={this.state.insights} />);
+      currentView = null;
 
     if (this.state.loading) {
-      loading = (<RaisedButton label="Loading..."
-          primary={true} visible={this.state.loading} />);
+      loading = (<RaisedButton
+                 label="Loading..."
+                 primary={true}
+                 visible={this.state.loading} />);
+    } else {
+      currentView = (<InsightList key="insight-list" insights={this.state.insights} />);
     }
 
     if (this.state.currentInsight) {
-       currentView= (<Insight />);
+       currentView = (<Insight key="insight"/>);
     }
 
     return (
@@ -56,7 +60,7 @@ var Cello = React.createClass({
           </ul>
         </aside>
         <article>
-          <ReactCSSTransitionGroup transitionName="example">
+          <ReactCSSTransitionGroup transitionName="view-transition-show-from-right">
           {currentView}
           </ReactCSSTransitionGroup>
         </article>

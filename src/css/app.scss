@@ -2,6 +2,7 @@
 @import 'variables';
 @import 'mui_tabs';
 @import 'fullpage';
+@import 'animations';
 
 $startColor: #cf9e75;
 $stopColor: #d2dcd1;
@@ -36,7 +37,7 @@ body {
   height: 618px;
   margin: 60px auto;
   padding: 30px;
-  overflow: auto;
+  overflow: hidden;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, .2);
   opacity: .8;
   background-color: #fff;
@@ -57,7 +58,8 @@ aside {
 
 article {
   margin-left: $asideWidth + 20;
-  overflow:hidden;
+  height: 100%;
+  overflow-y: auto;
 }
 
 ul {
@@ -77,6 +79,7 @@ ul {
     width: 80px;
     float: left;
     margin-right: $gap;
+    text-align: center;
   }
 
   > .bd {
@@ -101,6 +104,12 @@ ul {
   padding: 5px;
   text-align: center;
   line-height: 45px;
+}
+.strategy-card {
+  padding: 10px;
+  text-align: center;
+  line-height: 45px;
+  color: #999;
 }
 
 .score-circle {
