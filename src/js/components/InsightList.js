@@ -3,14 +3,20 @@
 var React = require('react');
 var Actions = require('../actions/AppActions');
 var shortdate = require('../utils/format').shortdate;
-var Icon = require('material-ui').Icon;
+var mui = require('material-ui');
+var Icon = mui.Icon;
+var IconButton = mui.IconButton;
+var NewInsightDialog = require('./NewInsightDialog');
 
 var InsightList = React.createClass({
+
   handleClick: function(insightId) {
     Actions.getInsight(insightId);
   },
+
   createInsight: function(insight) {
     var score = 'N/A';
+
     if (insight.last_sample_score) {
       score = (<span className="score-circle">{insight.last_sample_score.split('/')[0]}</span>);
     }
@@ -18,6 +24,7 @@ var InsightList = React.createClass({
     var strategyIcon = insight.strategy === 'desktop' ?
       (<Icon icon="hardware-laptop-chromebook" />) :
       (<Icon icon="hardware-phone-iphone" />);
+    
     return (<div key={insight.id} onClick={this.handleClick.bind(this, insight.id)} className="insight-card">
               <div className="hd">
                   <div className="meta">LAST SCORE</div>
@@ -41,9 +48,24 @@ var InsightList = React.createClass({
     }
 
     return (<div className='insight-list'>
-              {this.props.insights.map(this.createInsight, this)}
+              <div className="hd">
+                <div className="tools">
+                  <IconButton icon="content-add-circle" onClick={this.openCreateDialog}/>
+                </div>
+                Insights
+              </div>
+              <div className="bd">
+                {this.props.insights.map(this.createInsight, this)}
+              </div>
+              <NewInsightDialog
+                ref="newInsightDialog"/>
             </div>);
+  },
+
+  openCreateDialog: function() {
+    this.refs.newInsightDialog.show();
   }
+
 });
 
 module.exports = InsightList;

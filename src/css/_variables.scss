@@ -1,3 +1,7 @@
+//Disabled Colors
+$disabled-color: opacify($body-text-color, .3);
+
+
 //Typography
 $headingFontFamily: 'Roboto', sans-serif;
 $contentFontFamily: 'Roboto', sans-serif;
@@ -6,4 +10,12 @@ $contentFontFamily: 'Roboto', sans-serif;
 $view-transition-stack-stable:  5;
 $view-transition-stack-top:    20;
 $view-transition-stack-bottom: 10;
+
+// radio button
+$radio-button-size: 24px;
+$radio-button-border-color:  $body-text-color;
+$radio-button-background-color: white;
+$radio-button-checked-color: $primary-1-color;
+$radio-button-required-color: $primary-1-color;
+$radio-button-disabled-color: $disabled-color;
 

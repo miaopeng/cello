@@ -1,8 +1,12 @@
 @import "../../node_modules/material-ui-sass/material-ui";
 @import 'variables';
-@import 'mui_tabs';
 @import 'fullpage';
 @import 'animations';
+@import 'mui_tabs';
+@import 'mui-text-field';
+@import 'mui-radio-button';
+@import 'mui-switch-wrap';
+@import 'mui-svg-icon';
 
 $startColor: #cf9e75;
 $stopColor: #d2dcd1;
@@ -39,13 +43,14 @@ body {
   padding: 30px;
   overflow: hidden;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, .2);
-  opacity: .8;
+  // opacity: .8;
   background-color: #fff;
 }
 
 aside {
   float: left;
   width: $asideWidth;
+  display: none;
   a {
     font-size: 24px;
     color: #666;
@@ -57,13 +62,44 @@ aside {
 }
 
 article {
-  margin-left: $asideWidth + 20;
-  height: 100%;
-  overflow-y: auto;
+  // margin-left: $asideWidth + 20;
+  // height: 100%;
+  // overflow-y: auto;
 }
 
 ul {
   list-style: none;
+}
+
+hr {
+  border: none;
+  border-bottom: solid 1px #e0e0e0;
+}
+
+.insight-list {
+  > .hd {
+    font-size: 21px;
+    margin: 20px 0;
+    padding-bottom: 20px; 
+    text-transform: uppercase;
+    color: gray;
+    border-bottom: 1px solid #ddd;
+  }
+
+  > .bd {
+    height: 480px;
+    width: 100%;
+    overflow-y: auto;
+  }
+
+  .tools {
+    float: right;
+
+    .mui-icon {
+      font-size: 46px;
+      color: $hlGreen;
+    }
+  }
 }
 
 .insight-card {
@@ -135,7 +171,7 @@ ul {
 
 .insight-panel {
   h1 {
-    font-size: 18px;
+    font-size: 24px;
     color: $hlGreen;
     border-bottom: 1px solid #eee;
     padding-bottom: $gap;
@@ -222,4 +258,13 @@ ul {
     margin-top: 5px;
     text-decoration: none;
   }
+}
+
+.field-group {
+  margin-bottom: 30px;
+  width: 256px;
+}
+
+.mui-dialog .mui-dialog-content {
+  margin-top: -20px;
 }

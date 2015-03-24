@@ -46,6 +46,8 @@ AppDispatcher.register(function(payload) {
       return getInsight(action.insightId);
     case actionType.NAV_INSIGHT_LIST:
       return navInsightList();
+    case actionType.POST_NEW_INSIGHT:
+      return postNewInsight(action.insightData);
     default:
       return true;
   }
@@ -85,6 +87,21 @@ function navInsightList () {
   _db.currentInsightId = null;
   _db.currentInsight = null;
   AppStores.emitChange();
+}
+
+function postNewInsight(insightData) {
+  console.info("log: " + 2, insightData); // log
+  request.post(app.apiRoot + '/insights.json')
+    .type('form')
+    .send(insightData)
+    .set('Content-Type', 'application/json')
+    // .set('X-Requested-With', 'XMLHttpRequest')
+    .end(function(resp) {
+      if (resp.body && resp.body) {
+        console.info("log: post successful", resp); // log
+        AppStores.emitChange();
+      }
+    });
 }
 
 module.exports = AppStores;

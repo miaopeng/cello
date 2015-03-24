@@ -21,7 +21,7 @@
     "classnames": "^1.0.0",
     "express": "^4.10.4",
     "material-ui": "^0.6",
-    "material-ui-sass": "^0.5.2",
+    "material-ui-sass": "^0.6.0",
     "moment": "^2.8.4",
     "object.assign": "^1.1.1",
     "superagent": "^0.21.0",

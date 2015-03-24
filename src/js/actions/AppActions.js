@@ -27,5 +27,13 @@ module.exports = {
     AppDispatcher.handleViewAction({
       actionType: actionType.NAV_INSIGHT_LIST
     });
-  }
+  },
+
+  postNewInsight: function(insightData) {
+    console.info("log: data", insightData); // log
+    AppDispatcher.handleViewAction({
+      actionType: actionType.POST_NEW_INSIGHT,
+      insightData: insightData
+    });
+  },
 };

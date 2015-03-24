@@ -2,11 +2,13 @@
 
 var React = require('react');
 var Store = require('../stores/AppStores');
+var Actions = require('../actions/AppActions');
 var classnames= require('classnames');
 var shortdate = require('../utils/format').shortdate;
 var mui = require('material-ui');
 var Tabs = mui.Tabs;
 var Tab = mui.Tab;
+var IconButton = mui.IconButton;
 var PageStats = require('./PageStats');
 var RuleResult = require('./RuleResult');
 
@@ -40,7 +42,10 @@ var Insight = React.createClass({
 
   render: function() {
     return (<div className='insight-panel'>
-              <h1>{this.state.url}</h1>
+              <h1>
+                <IconButton icon="navigation-arrow-back" onClick={this.navHome} />
+                {this.state.url}
+              </h1>
               <div className="bd">
                 <div className="endpoint-list">
                   {this.state.endpoints.map(this.createEndPoint, this)} 
@@ -54,6 +59,10 @@ var Insight = React.createClass({
                 </div>
               </div>
             </div>);
+  },
+
+  navHome: function() {
+    Actions.navInsightList();
   },
 
   _onActive: function(tab){ 
