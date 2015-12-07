@@ -22,3 +22,4 @@ images_dir = "src/pics"
 # preferred_syntax = :sass
 # and then run:
 # sass-convert -R --from scss --to sass sass scss && rm -rf sass && mv scss sass
+
